@@ -8,6 +8,7 @@
 
 import UIKit
 import AccountKit
+import Firebase;
 
 class ForgotVC: BaseViewController, AKFViewControllerDelegate {
 
@@ -25,10 +26,23 @@ class ForgotVC: BaseViewController, AKFViewControllerDelegate {
     
     var _accountKit: AccountKit!
     
+    var strTokenFirebase:String="";
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         SetupUI()
+        
+        InstanceID.instanceID().instanceID { (result, error) in
+            if let error = error {
+                print("Error fetching remote instance ID: \(error)")
+            } else if let result = result {
+                print("Remote instance ID token: \(result.token)")
+                // self.instanceIDTokenMessage.text  = "Remote InstanceID token: \(result.token)"
+                self.strTokenFirebase = result.token
+            }
+        }
+        
     }
 
     
@@ -166,13 +180,21 @@ class ForgotVC: BaseViewController, AKFViewControllerDelegate {
     func ApiForgotPassword(strToken : String)
     {
         self.showLoader()
-        self.forgotPassword(pass: txtPass.text!, TokenCode: strToken)
+        self.forgotPassword(fcm_token:strTokenFirebase,pass: txtPass.text!, TokenCode: strToken)
         { (result, response) in
             if result == "Success"
             {
                 self.hideLoader()
                  let windows = UIApplication.shared.windows
                 windows.last?.makeToast(appConstants.appDelegate.languageSelectedStringForKey(key: "successful_reset_password") as String)
+                
+                
+                if let val = response["token"]
+                {
+                    appConstants.appDelegate.setToken(strValue: val as! String)
+                    appConstants.appDelegate.OpenHomeScreen()
+                }
+                
                 
             }
             else

@@ -10,6 +10,7 @@ import UIKit
 import AccountKit
 import Alamofire
 import SVProgressHUD
+import Firebase
 
 class RegisterVC: BaseViewController,AKFViewControllerDelegate {
 
@@ -30,10 +31,22 @@ class RegisterVC: BaseViewController,AKFViewControllerDelegate {
     
     var _accountKit: AccountKit!
     
+    var strTokenFirebase:String = "";
     override func viewDidLoad() {
         super.viewDidLoad()
 
         SetupUI()
+        
+        
+        InstanceID.instanceID().instanceID { (result, error) in
+            if let error = error {
+                print("Error fetching remote instance ID: \(error)")
+            } else if let result = result {
+                print("Remote instance ID token: \(result.token)")
+                // self.instanceIDTokenMessage.text  = "Remote InstanceID token: \(result.token)"
+                self.strTokenFirebase = result.token
+            }
+        }
     }
 
     
@@ -195,14 +208,20 @@ class RegisterVC: BaseViewController,AKFViewControllerDelegate {
     func ApiRegister(strToken : String)
     {
         self.showLoader()
-        self.signUp(name: txtName.text!, email: txtEmail.text!, password: txtPass.text!, cnfmPass:txtCnfmPass.text!, TokenCode: strToken)
+        self.signUp(fcm_token: strTokenFirebase ,name: txtName.text!, email: txtEmail.text!, password: txtPass.text!, cnfmPass:txtCnfmPass.text!, TokenCode: strToken)
         { (result, response) in
             if result == "Success"
             {
                 self.hideLoader()
-                 let windows = UIApplication.shared.windows
-                windows.last?.makeToast( appConstants.appDelegate.languageSelectedStringForKey(key: "successfully_register") as String)
-                self.navigationController?.popViewController(animated: true)
+                 //let windows = UIApplication.shared.windows
+                //windows.last?.makeToast( appConstants.appDelegate.languageSelectedStringForKey(key: "successfully_register") as String)
+                //self.navigationController?.popViewController(animated: true)
+                
+                if let val = response["token"]
+                {
+                    appConstants.appDelegate.setToken(strValue: val as! String)
+                    appConstants.appDelegate.OpenHomeScreen()
+                }
              
             }
             else

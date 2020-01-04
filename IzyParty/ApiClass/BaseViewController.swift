@@ -94,8 +94,11 @@ class BaseViewController: UIViewController {
     
 
     
-    func signUp(name: String, email: String, password: String, cnfmPass: String, TokenCode: String, completionHandler: @escaping (String, [String: Any]) -> Void) {
-        let param = ["name": name, "email": email, "password": password,  "passwordConfirm": cnfmPass, "code" : TokenCode];
+    func signUp(fcm_token:String,name: String, email: String, password: String, cnfmPass: String, TokenCode: String, completionHandler: @escaping (String, [String: Any]) -> Void) {
+        let param = ["name": name, "email": email, "password": password,  "passwordConfirm": cnfmPass, "code" : TokenCode,
+                     "iOSTOKEN": fcm_token,"platform":"ios",
+                     "language": appConstants.appDelegate.getLang() == "FR" ? "french" : "english"
+        ];
         
         print("signUp param = \(param)")
         
@@ -112,8 +115,11 @@ class BaseViewController: UIViewController {
     }
     
 
-    func forgotPassword(pass: String, TokenCode: String, completionHandler: @escaping (String, [String: Any]) -> Void) {
-        let param = ["password": pass, "code" : TokenCode];
+    func forgotPassword(fcm_token:String,pass: String, TokenCode: String, completionHandler: @escaping (String, [String: Any]) -> Void) {
+        let param = ["password": pass, "code" : TokenCode,
+                     "iOSTOKEN": fcm_token,"platform":"ios",
+                     "language": appConstants.appDelegate.getLang() == "FR" ? "french" : "english"
+                     ];
         
         print("forgotPassword param = \(param)")
         
