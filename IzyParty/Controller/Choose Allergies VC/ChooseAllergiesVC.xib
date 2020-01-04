@@ -21,6 +21,7 @@
                 <outlet property="OthersView" destination="UOk-P4-kHc" id="ImS-UA-4lL"/>
                 <outlet property="PetView" destination="onf-Kr-njK" id="bz3-WM-hIw"/>
                 <outlet property="ViewHeader" destination="By8-ZR-pzd" id="qk8-qA-X7h"/>
+                <outlet property="getName" destination="X8R-xe-MeQ" id="sfx-zR-JGt"/>
                 <outlet property="heightConstantFood" destination="2cc-No-nKD" id="mAU-h5-Ygx"/>
                 <outlet property="heightConstantOthers" destination="wm1-P2-h8I" id="74H-SO-TRy"/>
                 <outlet property="heightConstantPet" destination="2fx-Gx-H7s" id="aDh-fP-WCC"/>
@@ -37,7 +38,6 @@
                 <outlet property="txtFoodAllergiepickUpData" destination="AMq-AQ-hxz" id="iLg-mh-5vf"/>
                 <outlet property="txtPetAllergiepickUpData" destination="u6p-lt-79B" id="WUm-1F-SjO"/>
                 <outlet property="txtViewOthers" destination="fhb-5e-vN7" id="e7B-zO-3m7"/>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -115,18 +115,18 @@
                                     </constraints>
                                 </imageView>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X8R-xe-MeQ">
-                                    <rect key="frame" x="10" y="555" width="355" height="30"/>
+                                    <rect key="frame" x="10" y="555" width="355" height="50"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="355" id="DuC-3Y-0jp"/>
-                                        <constraint firstAttribute="height" constant="30" id="UWv-dr-vuN"/>
+                                        <constraint firstAttribute="height" constant="50" id="UWv-dr-vuN"/>
                                     </constraints>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="edE-wj-yfb">
-                                    <rect key="frame" x="10" y="592" width="355" height="50"/>
+                                    <rect key="frame" x="10" y="612" width="355" height="50"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="No Food Allergy" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AMq-AQ-hxz">
                                             <rect key="frame" x="10" y="10" width="287" height="30"/>
@@ -154,7 +154,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="onf-Kr-njK">
-                                    <rect key="frame" x="10" y="667" width="355" height="50"/>
+                                    <rect key="frame" x="10" y="687" width="355" height="50"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="No Pet Allergy" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u6p-lt-79B">
                                             <rect key="frame" x="10" y="10" width="287" height="30"/>
@@ -182,7 +182,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UOk-P4-kHc">
-                                    <rect key="frame" x="10" y="737" width="355" height="90"/>
+                                    <rect key="frame" x="10" y="757" width="355" height="90"/>
                                     <subviews>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Please put other allergies here..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fhb-5e-vN7">
                                             <rect key="frame" x="5" y="5" width="345" height="80"/>
@@ -201,14 +201,14 @@
                                     </constraints>
                                 </view>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f33-ne-SEB">
-                                    <rect key="frame" x="137.5" y="842" width="100" height="40"/>
+                                    <rect key="frame" x="137.5" y="862" width="100" height="40"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="U3N-YB-pvj"/>
                                         <constraint firstAttribute="width" constant="100" id="bYs-o6-QcB"/>
                                     </constraints>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHI-jV-0I6">
-                                    <rect key="frame" x="137.5" y="842" width="100" height="40"/>
+                                    <rect key="frame" x="137.5" y="862" width="100" height="40"/>
                                     <color key="backgroundColor" red="0.20302978157997131" green="0.11343631893396378" blue="0.70981717109680176" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="100" id="IL7-EE-E1d"/>

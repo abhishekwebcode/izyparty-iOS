@@ -47,7 +47,7 @@ class ChooseAllergiesVC: UIViewController,
     @IBOutlet var lblWhatKidDoesTitle : UILabel!
     @IBOutlet var lblYes_NoTitle : UILabel!
     
-    @IBOutlet var childNameTextbox:UITextView!
+    @IBOutlet var getName:UITextField!
     
     var tagValue = Int()
     
@@ -525,6 +525,11 @@ class ChooseAllergiesVC: UIViewController,
     
     func API_AcceptInvite()
     {
+        if (getName.text!=="") {
+            let windows = UIApplication.shared.windows
+            windows.last?.makeToast( appConstants.appDelegate.languageSelectedStringForKey(key: "error_accpeting_invite") as String)
+            return;
+        }
         //MBProgressHUD.showAdded(to: self.view, animated: true, andTitle: nil)
         
         //http://beta.api.ezeelo.in/api/TerritoryHierarchyByPincode/Getcity
@@ -543,6 +548,7 @@ class ChooseAllergiesVC: UIViewController,
         
         
         let parameters : Parameters = [
+            "childName":getName.text!,
             "eventId": EventID,
             "isAllergy": switchPartyTheme.isOn ?  "true" : "false",
             "allergy1":  txtFoodAllergiepickUpData.text!,
