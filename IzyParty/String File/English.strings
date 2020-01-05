@@ -344,5 +344,7 @@
 
 
 "childNameLabel" = "Child Name";
-
-
+"add_todo_allergy"="Add this invitation to your calendar?";
+//TODO
+"childNameTextLabelOnAllergy"="Your child's name...";
+"allergy_chidname_error"="Please enter the name of your child";

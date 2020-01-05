@@ -171,6 +171,10 @@ class ChooseAllergiesVC: UIViewController,
         txtFoodAllergiepickUpData.placeholder = appConstants.appDelegate.languageSelectedStringForKey(key: "No_Food_Allergy") as String
         
         txtPetAllergiepickUpData.placeholder = appConstants.appDelegate.languageSelectedStringForKey(key: "No_Pet_Allergy")
+        
+        getName.text = appConstants.appDelegate.languageSelectedStringForKey(key: "childNameTextLabelOnAllergy") as String
+        
+        
     }
     
     func setGradientBackground() {
@@ -527,7 +531,7 @@ class ChooseAllergiesVC: UIViewController,
     {
         if (getName.text!=="") {
             let windows = UIApplication.shared.windows
-            windows.last?.makeToast( appConstants.appDelegate.languageSelectedStringForKey(key: "error_accpeting_invite") as String)
+            windows.last?.makeToast( appConstants.appDelegate.languageSelectedStringForKey(key: "allergy_chidname_error") as String)
             return;
         }
         //MBProgressHUD.showAdded(to: self.view, animated: true, andTitle: nil)
@@ -611,7 +615,7 @@ class ChooseAllergiesVC: UIViewController,
     }
     
     func AddCalenderPopup1(strText :String,ddd :Double) {
-        let alert = UIAlertController(title: nil , message: appConstants.appDelegate.languageSelectedStringForKey(key: "add_todo_using_calendar") as String,         preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: nil , message: appConstants.appDelegate.languageSelectedStringForKey(key: "add_todo_allergy") as String,         preferredStyle: UIAlertController.Style.alert)
         
         alert.addAction(UIAlertAction(title: appConstants.appDelegate.languageSelectedStringForKey(key: "yes") as String, style: UIAlertAction.Style.default, handler: { _ in
             //Cancel Action
