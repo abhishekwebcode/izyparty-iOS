@@ -88,7 +88,7 @@
 "events" = "Mes Évènements";
 "invitations" = "Mes Invitations reçues";
 "change_event_details" = "Changer les détails de l\'événement";
-"view_responses" = "Voir les réponses des invités";
+"view_responses" = "Voir le détail des réponses";
 "change_attendees" = "Ajouter des\n participants";
 "delete_event" = "Supprimer l\'événement";
 "gifts" = "Cadeaux";
@@ -231,7 +231,7 @@
 "registeredUsers" = "Participants inscrits à Izyparty";
 "nonAppPhoneNumbers" = "Participants non inscrits à Izyparty";
 "error_loading_attendees" = "Erreur lors du chargement des participants à votre fête";
-"view_attendees" = "Voir les participants";
+"view_attendees" = "Voir la liste des invités";
 "party" = "fête";
 "change_was_made_by" = "Appuyez ici pour voir les modifications apportées par";
 "update_event_notification_text" = "Certains changements ont été effectués pour";

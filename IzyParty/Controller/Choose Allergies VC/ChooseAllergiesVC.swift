@@ -620,7 +620,10 @@ class ChooseAllergiesVC: UIViewController,
         alert.addAction(UIAlertAction(title: appConstants.appDelegate.languageSelectedStringForKey(key: "yes") as String, style: UIAlertAction.Style.default, handler: { _ in
             //Cancel Action
             
-            DispatchQueue.main.async {
+            DispatchQueue.main.async(execute: {
+                // work Needs to be done
+                
+                
                 let store = EKEventStore()
                 store.requestAccess(to: .event) { (granted, error) in
                     
@@ -639,7 +642,7 @@ class ChooseAllergiesVC: UIViewController,
                         controller.editViewDelegate = self
                         
                         self.present(controller, animated: true)
-                     print("after controller run")
+                        print("after controller run")
                         
                     }
                     else{
@@ -647,8 +650,10 @@ class ChooseAllergiesVC: UIViewController,
                         self.afterCalendar(jsonDict: self.tempJSON)
                     }
                 }
-            }
+                
+            })
             
+        
         }))
         alert.addAction(UIAlertAction(title: appConstants.appDelegate.languageSelectedStringForKey(key: "no") as String,
                                       style: UIAlertAction.Style.default,
