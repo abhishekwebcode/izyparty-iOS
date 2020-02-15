@@ -15,12 +15,36 @@ import EventKitUI
 
 class ChooseAllergiesVC: UIViewController,
     UIPickerViewDataSource,UIPickerViewDelegate,UITextViewDelegate,
-                    EKEventEditViewDelegate
+                    EKEventEditViewDelegate,UITextFieldDelegate
 {
     func eventEditViewController(_ controller: EKEventEditViewController, didCompleteWith action: EKEventEditViewAction) {
         print("after controller top")
         controller.dismiss(animated: true)
         afterCalendar(jsonDict: tempJSON)
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+    
+        
+        // for child name
+        if getName.text == appConstants.appDelegate.languageSelectedStringForKey(key: "childNameTextLabelOnAllergy") as String
+        {
+            getName.textColor = UIColor.black
+            getName.text = ""
+        }
+        
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        
+        if getName.text?.count == 0
+        {
+            getName.text = appConstants.appDelegate.languageSelectedStringForKey(key: "childNameTextLabelOnAllergy") as String
+            getName.textColor = UIColor.lightGray
+            
+        }
+        
     }
     
     
@@ -121,6 +145,11 @@ class ChooseAllergiesVC: UIViewController,
         
         setGradientBackground()
         
+        getName.delegate = self
+        
+        let paddingView : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 60))
+        getName.leftView = paddingView
+        getName.leftViewMode = .always
         
         sendImgView.layer.cornerRadius = 5
         sendImgView.clipsToBounds = true
@@ -210,12 +239,6 @@ class ChooseAllergiesVC: UIViewController,
             textView.text = ""
         }
         
-        // for child name
-        if getName.text == appConstants.appDelegate.languageSelectedStringForKey(key: "childNameTextLabelOnAllergy") as String
-        {
-            textView.textColor = UIColor.black
-            textView.text = ""
-        }
         
         
     }
@@ -230,12 +253,6 @@ class ChooseAllergiesVC: UIViewController,
             
         }
         
-        if textView.text.count == 0
-        {
-            getName.text = appConstants.appDelegate.languageSelectedStringForKey(key: "childNameTextLabelOnAllergy") as String
-            getName.textColor = UIColor.lightGray
-            
-        }
         
     }
     
