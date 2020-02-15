@@ -140,6 +140,9 @@ class ChooseAllergiesVC: UIViewController,
         
         txtViewOthers.textColor = UIColor.lightGray
         
+        //child name hinting
+        getName.textColor = UIColor.lightGray
+        
         FoodView.alpha = 0.0
         PetView.alpha = 0.0
         OthersView.alpha = 0.0
@@ -166,6 +169,10 @@ class ChooseAllergiesVC: UIViewController,
          txtFoodAllergiepickUpData.placeholder = appConstants.appDelegate.languageSelectedStringForKey(key: "yes_no") as String
          }*/
         txtViewOthers.text = appConstants.appDelegate.languageSelectedStringForKey(key: "please_enter_your_allergy_precisely") as String
+        
+        // child name hint text set initially
+        getName.text = appConstants.appDelegate.languageSelectedStringForKey(key: "childNameTextLabelOnAllergy") as String
+        
         sendButton.setTitle(appConstants.appDelegate.languageSelectedStringForKey(key: "send") as String, for: .normal)
         
         txtFoodAllergiepickUpData.placeholder = appConstants.appDelegate.languageSelectedStringForKey(key: "No_Food_Allergy") as String
@@ -203,6 +210,14 @@ class ChooseAllergiesVC: UIViewController,
             textView.text = ""
         }
         
+        // for child name
+        if getName.text == appConstants.appDelegate.languageSelectedStringForKey(key: "childNameTextLabelOnAllergy") as String
+        {
+            textView.textColor = UIColor.black
+            textView.text = ""
+        }
+        
+        
     }
     
     
@@ -214,6 +229,14 @@ class ChooseAllergiesVC: UIViewController,
             textView.textColor = UIColor.lightGray
             
         }
+        
+        if textView.text.count == 0
+        {
+            getName.text = appConstants.appDelegate.languageSelectedStringForKey(key: "childNameTextLabelOnAllergy") as String
+            getName.textColor = UIColor.lightGray
+            
+        }
+        
     }
     
     
@@ -552,8 +575,9 @@ class ChooseAllergiesVC: UIViewController,
         
         
         let parameters : Parameters = [
-            "childName":getName.text!,
-            "eventId": EventID,
+            "childName": getName.text! ==
+            appConstants.appDelegate.languageSelectedStringForKey(key: "childNameTextLabelOnAllergy") as String ? "" :  getName.text!,
+            "eventId":   EventID,
             "isAllergy": switchPartyTheme.isOn ?  "true" : "false",
             "allergy1":  txtFoodAllergiepickUpData.text!,
             "allergy2":  txtPetAllergiepickUpData.text! ,

@@ -324,8 +324,12 @@ class MyEventVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UISe
                 self.lblNoEventMessage.isHidden = false
                 self.tableView.isHidden = true
             }
+            do { 
+                try self.tableView.reloadData();
+            } catch let error {
+                print(error.localizedDescription)
+            }
             
-            self.tableView.reloadData()
             self.API_Badge_Events_List()
             
             //DispatchQueue.main.asyncAfter(deadline: .now() + 10, execute: {
