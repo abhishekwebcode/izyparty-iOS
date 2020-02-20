@@ -655,6 +655,11 @@ class ChooseAllergiesVC: UIViewController,
         }
     }
     
+    func interop(edcontroller :EKEventEditViewController){
+        
+        print("after controller run")
+    }
+    
     func AddCalenderPopup1(strText :String,ddd :Double) {
         let alert = UIAlertController(title: nil , message: appConstants.appDelegate.languageSelectedStringForKey(key: "add_todo_allergy") as String,         preferredStyle: UIAlertController.Style.alert)
         
@@ -681,9 +686,10 @@ class ChooseAllergiesVC: UIViewController,
                         controller.event = event
                         controller.eventStore = store
                         controller.editViewDelegate = self
-                        
-                        self.present(controller, animated: true)
-                        print("after controller run")
+                    
+                        OperationQueue.main.addOperation {
+                            self.present(controller, animated: true)
+                        }
                         
                     }
                     else{
@@ -694,8 +700,11 @@ class ChooseAllergiesVC: UIViewController,
                 
             })
             
-        
+            
         }))
+        
+        
+        
         alert.addAction(UIAlertAction(title: appConstants.appDelegate.languageSelectedStringForKey(key: "no") as String,
                                       style: UIAlertAction.Style.default,
                                       handler: {(_: UIAlertAction!) in
