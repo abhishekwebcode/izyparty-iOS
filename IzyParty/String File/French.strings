@@ -306,7 +306,7 @@
 "PASSWORD_NOUPPER" =  "Votre mot de passe doit comporter au moins 1 lettre majuscule";
 "PASSWORD_SPECIALCHAR" = "Votre mot de passe doit comporter au moins 1 caractère spécial";
 "present" = "Présent";
-"Absent" = "Absent";
+"Absent" = "Pas Présent";
 "number" = "Numéro";
 "valid_Email" = "S'il vous plaît entrer une adresse email valide";
 "password_validation_message" = "Votre mot de passe doit comporter au moins une lettre majuscule, un caractère spécial et un chiffre.";

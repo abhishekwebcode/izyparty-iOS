@@ -145,11 +145,9 @@ class SeeGuestVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             
             cell.imgView.image = dict["intention"] as! Bool ? UIImage.init(named: "check") :  UIImage.init(named: "close")
             
-            
-            
             cell.lblPresentTitle.text =   dict["intention"] as! Bool ? appConstants.appDelegate.languageSelectedStringForKey(key: "present") as String : appConstants.appDelegate.languageSelectedStringForKey(key: "Absent") as String
             
-            
+        
             cell.selectionStyle = .none
             return cell
         }
