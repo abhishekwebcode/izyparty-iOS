@@ -191,6 +191,7 @@ class SeeGuestVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                         cell!.childName.textAlignment = .center
                         cell!.childNameText.text = (dict["childNameAllergy"] as! String)
                         cell!.childNameText.textAlignment = .center
+                        
                         print("Cell type 2")
                     }
                 

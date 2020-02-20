@@ -88,7 +88,7 @@
 "events" = "Mes Évènements";
 "invitations" = "Mes Invitations reçues";
 "change_event_details" = "Changer les détails de l\'événement";
-"view_responses" = "Voir le détail des réponses";
+"view_responses" = "Voir les réponses des autres invités";
 "change_attendees" = "Ajouter des\n participants";
 "delete_event" = "Supprimer l\'événement";
 "gifts" = "Cadeaux";
@@ -300,7 +300,7 @@
 "no_events_other" = "Aucun événement";
 "events_option_title" = "Gérer la fête";
 "edit_party" = "Modifier les détails de la fête";
-"see_responses" = "Voir les réponses des invités";
+"see_responses" = "Voir les réponses des autres invités";
 "PASSWORD_LENGTH" =  "Votre mot de passe doit comporter 8 caractères";
 "PASSWORD_NODIGIT" = "Votre mot de passe doit avoir au moins 1 chiffre";
 "PASSWORD_NOUPPER" =  "Votre mot de passe doit comporter au moins 1 lettre majuscule";
