@@ -625,9 +625,22 @@ class ChooseAllergiesVC: UIViewController,
                     {
                         
                         self.tempJSON=jsonDict
-                        let d:Double = jsonDict["date"] as! Double
+                        
+                        // get the timestamps from response
+                        
+                        let timeStartResponse:String = jsonDict["timeStart"] as! String
+                        let timeEndResponse:String = jsonDict["timeEnd"] as! String
+                        
+                        // convert them to dates and then pass to calendar popup
+                        
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+                    
+                        let timeStart:Date = dateFormatter.date(from: timeStartResponse)!
+                        let timeEnd:Date = dateFormatter.date(from: timeEndResponse)!
+                        
                         let text:String = jsonDict["sendName"] as! String
-                        self.AddCalenderPopup1(strText: text, ddd: d)
+                        self.AddCalenderPopup1(strText: text,startDate: timeStart,endDate: timeEnd )
                     }
                         
                     else
@@ -647,20 +660,14 @@ class ChooseAllergiesVC: UIViewController,
                     
                     Utility.alert("Something went wrong.", andTitle: appConstants.AppName, andController: self)
                 }
-                
+            
             }
-            
-            
             
         }
     }
     
-    func interop(edcontroller :EKEventEditViewController){
-        
-        print("after controller run")
-    }
     
-    func AddCalenderPopup1(strText :String,ddd :Double) {
+    func AddCalenderPopup1(strText :String,startDate:Date,endDate:Date) {
         let alert = UIAlertController(title: nil , message: appConstants.appDelegate.languageSelectedStringForKey(key: "add_todo_allergy") as String,         preferredStyle: UIAlertController.Style.alert)
         
         alert.addAction(UIAlertAction(title: appConstants.appDelegate.languageSelectedStringForKey(key: "yes") as String, style: UIAlertAction.Style.default, handler: { _ in
@@ -676,11 +683,9 @@ class ChooseAllergiesVC: UIViewController,
                     if (granted) && (error == nil) {
                         let event = EKEvent(eventStore: store)
                         event.title = strText
-                        event.startDate = Date(timeIntervalSince1970: (ddd/1000)-(86400) )
-                        event.endDate = Date()
                         
-                        
-                        // prompt user to add event (to whatever calendar they want)
+                        event.startDate =  startDate
+                        event.endDate = endDate
                         
                         let controller = EKEventEditViewController()
                         controller.event = event
@@ -693,7 +698,6 @@ class ChooseAllergiesVC: UIViewController,
                         
                     }
                     else{
-                        print("failed to save event with error : \(error) or access not granted")
                         self.afterCalendar(jsonDict: self.tempJSON)
                     }
                 }
